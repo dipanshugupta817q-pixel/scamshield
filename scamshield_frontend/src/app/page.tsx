@@ -344,7 +344,7 @@ export default function Home() {
 
     let worker: Awaited<ReturnType<typeof createWorker>> | undefined;
     try {
-      worker = await createWorker("eng");
+      worker = await createWorker("eng+deu+hin");
       const { data } = await worker.recognize(file);
       const extracted = data.text.trim().slice(0, 20000);
 
@@ -356,9 +356,11 @@ export default function Home() {
       setText(extracted);
       setMode("message");
 
-      const foundUrl = extracted.match(/https?:\/\/[^\s<>"']+/i)?.[0]
+      const foundUrl = extracted.match(/\b(?:https?:\/\/|www\.)[^\s<>"']+|\b(?:[a-z0-9-]+\.)+(?:com|net|org|info|biz|xyz|site|online|top|shop|store|app|co|in|de|eu|io|me|cc|cn|ru|uk|us)(?:\/[^\s<>"']*)?/i)?.[0]
         ?.replace(/[),.;!?]+$/, "");
-      if (foundUrl) setUrl(foundUrl);
+      if (foundUrl) {
+        setUrl(/^https?:\/\//i.test(foundUrl) ? foundUrl : `https://${foundUrl}`);
+      }
 
       setNotice("Screenshot OCR complete. Review the extracted text, then click Analyze Threat.");
     } catch (error) {
