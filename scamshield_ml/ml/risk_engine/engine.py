@@ -13,7 +13,7 @@ SIGNAL_NAMES = [
 PATTERNS = {
     "Urgency": r"\b(urgent|immediately|right now|within \d+ (?:minutes?|hours?)|last chance|expire|expires|act now)\b",
     "Impersonation": r"\b(sbi|hdfc|icici|axis|paytm|phonepe|amazon|flipkart|uidai|income tax|police|bank|customer care|support team)\b",
-    "Financial Request": r"\b(pay|payment|transfer|send|fee|processing fee|deposit|upi|refund fee|charge|money|invest|investment|returns?|profit|rs\.?|₹)\b",
+    "Financial Request": r"\b(pay|payment|transfer|send|fee|processing fee|deposit|upi|refund fee|charge|money|invest|investment|returns?|profit|rs\.?|₹|prize|reward|lottery|winner|won|claim|share|whatsapp|euro)\b",
     "Credential Request": r"\b(otp|pin|password|cvv|card number|account number|kyc|pan|aadhaar|login|verify your account)\b",
     "Threat-language pattern": r"\b(blocked|suspended|legal action|police|penalty|fine|arrest|deactivate|closed)\b",
 }
