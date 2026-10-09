@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 import { useCallback, useEffect, useMemo, useState } from "react";
-const API_URL = (process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000").replace(/\/$/, "");
+const API_URL = (process.env.NEXT_PUBLIC_API_URL || "https://scamshield-8lur.onrender.com").replace(/\/$/, "");
 type NavKey = "dashboard" | "scanner" | "history" | "campaigns" | "safety";
 type Signal = {
   name?: string;
@@ -1076,3 +1076,4 @@ function FeatureCard({
     </div>
   );
 }
+
