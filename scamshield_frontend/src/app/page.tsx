@@ -1,5 +1,6 @@
 ﻿"use client";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState, type ChangeEvent } from "react";
+import { createWorker } from "tesseract.js";
 const API_URL = (process.env.NEXT_PUBLIC_API_URL || "https://scamshield-8lur.onrender.com").replace(/\/$/, "");
 type NavKey = "dashboard" | "scanner" | "history" | "campaigns" | "safety";
 type Signal = {
@@ -240,6 +241,8 @@ export default function Home() {
   const [submittingReport, setSubmittingReport] = useState(false);
   const [reportNotice, setReportNotice] = useState("");
   const [reportError, setReportError] = useState("");
+  const [screenshotPreview, setScreenshotPreview] = useState("");
+  const [ocrLoading, setOcrLoading] = useState(false);
 
   const riskScore = Math.max(
     0,
@@ -320,6 +323,54 @@ export default function Home() {
       .map(([campaign_id, data]) => ({ campaign_id, ...data }))
       .sort((a, b) => b.highestRisk - a.highestRisk);
   }, [history]);
+  async function handleScreenshotUpload(event: ChangeEvent<HTMLInputElement>) {
+    const file = event.target.files?.[0];
+    event.target.value = "";
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      setNotice("Please select an image file.");
+      return;
+    }
+    if (file.size > 8 * 1024 * 1024) {
+      setNotice("Image must be 8 MB or smaller.");
+      return;
+    }
+
+    setNotice("");
+    setResult(null);
+    setScreenshotPreview(URL.createObjectURL(file));
+    setOcrLoading(true);
+
+    let worker: Awaited<ReturnType<typeof createWorker>> | undefined;
+    try {
+      worker = await createWorker("eng");
+      const { data } = await worker.recognize(file);
+      const extracted = data.text.trim().slice(0, 20000);
+
+      if (!extracted) {
+        setNotice("No readable text found. Try a clearer screenshot.");
+        return;
+      }
+
+      setText(extracted);
+      setMode("message");
+
+      const foundUrl = extracted.match(/https?:\/\/[^\s<>"']+/i)?.[0]
+        ?.replace(/[),.;!?]+$/, "");
+      if (foundUrl) setUrl(foundUrl);
+
+      setNotice("Screenshot OCR complete. Review the extracted text, then click Analyze Threat.");
+    } catch (error) {
+      setNotice(
+        `Screenshot OCR failed: ${error instanceof Error ? error.message : "Unknown error"}`
+      );
+    } finally {
+      if (worker) await worker.terminate();
+      setOcrLoading(false);
+    }
+  }
+
   async function analyze() {
     const cleanText = text.trim();
     const cleanUrl = url.trim();
@@ -489,6 +540,9 @@ export default function Home() {
     setUrl("");
     setResult(null);
     setNotice("");
+    if (screenshotPreview) URL.revokeObjectURL(screenshotPreview);
+    setScreenshotPreview("");
+    setOcrLoading(false);
   }
   async function openScan(analysisId: string) {
     setSelectedScan(null);
@@ -658,7 +712,25 @@ export default function Home() {
                   <button onClick={() => setMode("message")} className={`rounded-xl py-3 text-sm font-black transition ${mode === "message" ? "bg-white text-[#087fe5] shadow-sm" : "text-[#7c94a6]"}`}>Message Analysis</button>
                   <button onClick={() => setMode("url")} className={`rounded-xl py-3 text-sm font-black transition ${mode === "url" ? "bg-white text-[#087fe5] shadow-sm" : "text-[#7c94a6]"}`}>URL Analysis</button>
                 </div>
-                <label className="mb-3 block text-sm font-black text-[#426175]">Suspicious content</label>
+                <div className="mb-5 rounded-2xl border border-dashed border-[#9bcde5] bg-[#f5fbff] p-5">
+                 <label className="block text-sm font-black text-[#426175]">Screenshot / Image Analysis</label>
+                 <p className="mt-1 text-xs leading-5 text-[#7b91a2]">Upload a screenshot of a suspicious SMS, chat, email or website. English OCR runs in your browser.</p>
+                 <input
+                   type="file"
+                   accept="image/*"
+                   onChange={(event) => void handleScreenshotUpload(event)}
+                   disabled={ocrLoading}
+                   className="mt-3 block w-full cursor-pointer text-sm text-[#426175] file:mr-3 file:rounded-xl file:border-0 file:bg-[#087fe5] file:px-4 file:py-2.5 file:font-bold file:text-white disabled:opacity-60"
+                 />
+                 {ocrLoading && <p role="status" className="mt-3 text-sm font-bold text-[#087fe5]">Reading screenshot text… first use may take a little longer.</p>}
+                 {screenshotPreview && (
+                   <div className="mt-4">
+                     <img src={screenshotPreview} alt="Selected screenshot preview" className="max-h-64 max-w-full rounded-xl border border-[#d5e7f1] object-contain" />
+                     <button type="button" onClick={() => { URL.revokeObjectURL(screenshotPreview); setScreenshotPreview(""); }} className="mt-2 text-xs font-bold text-[#c2410c]">Remove screenshot preview</button>
+                   </div>
+                 )}
+               </div>
+               <label className="mb-3 block text-sm font-black text-[#426175]">Suspicious content</label>
                 <textarea
                   value={text}
                   maxLength={20000}
