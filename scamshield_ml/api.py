@@ -14,6 +14,17 @@ from database.database import Base, engine, get_db
 from database import models
 from database.crud import save_scan, get_scan, list_scans, get_stats
 from ml.inference import analyze
+from pathlib import Path
+from urllib.parse import urlsplit
+import joblib
+from lexical_features import LexicalFeatures, normalize_model_url
+
+MODEL_PATH = Path(__file__).resolve().parent / "url_model_candidate.pkl"
+_artifact = joblib.load(MODEL_PATH)
+url_model = _artifact["model"]
+URL_THRESHOLD = float(_artifact.get("threshold", 0.5))
+URL_MODEL_VERSION = _artifact.get("version", "unknown")
+
 
 
 @asynccontextmanager
@@ -86,6 +97,49 @@ def api_health():
         "status": "ok",
         "service": "scamshield-api",
         "version": "1.1.0",
+    }
+
+
+class URLPredictRequest(BaseModel):
+    url: str = Field(min_length=8, max_length=4096)
+
+
+@app.post("/predict")
+@app.post("/api/v1/predict")
+def predict_url(request: URLPredictRequest):
+    raw_url = request.url.strip()
+    parsed = urlsplit(raw_url)
+
+    if parsed.scheme.lower() not in ("http", "https") or not parsed.hostname:
+        raise HTTPException(
+            status_code=400,
+            detail="Provide a valid HTTP or HTTPS URL."
+        )
+
+    try:
+        normalized_url = normalize_model_url(raw_url)
+        probabilities = url_model.predict_proba([normalized_url])[0]
+        classes = list(url_model.classes_)
+        phishing_index = classes.index(1)
+        score = float(probabilities[phishing_index])
+    except Exception:
+        raise HTTPException(
+            status_code=500,
+            detail="URL prediction failed. Check the ML service logs."
+        )
+
+    is_phishing = score >= URL_THRESHOLD
+    return {
+        "url": raw_url,
+        "hostname": parsed.hostname,
+        "prediction": "PHISHING" if is_phishing else "BENIGN",
+        "is_phishing": is_phishing,
+        "phishing_score": round(score, 6),
+        "threshold": URL_THRESHOLD,
+        "model_version": URL_MODEL_VERSION,
+        "warning": (
+            "Model prediction is probabilistic, not a guarantee of safety."
+        ),
     }
 
 
