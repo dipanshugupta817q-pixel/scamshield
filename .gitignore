@@ -1,0 +1,33 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Local database
+scamshield.db
+*.db-journal
+
+# Generated model backups
+*.backup
+*.bak
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.turbo/
+
+# Local logs and OS files
+*.log
+.DS_Store
+Thumbs.db
+
+# Temporary frontend files
+scamshield_frontend/scamshield_page.txt
+scamshield_frontend/*.backup
+scamshield_frontend/*.pre_job_demo.backup
+scamshield_frontend/tsconfig.tsbuildinfo

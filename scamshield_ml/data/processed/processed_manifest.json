@@ -1,0 +1,37 @@
+{
+  "project": "ScamShield",
+  "stage": "processed_dataset_preparation",
+  "synthetic_data_used": false,
+  "datasets": [
+    {
+      "file": "data\\processed\\candidate_benign_domains_tranco.csv",
+      "rows": 0,
+      "sha256": "01c1515a9906f407af9c34f24dd9c9f961aae25afc64eb9f1c818598d0591730",
+      "bytes": 48610445
+    },
+    {
+      "file": "data\\processed\\job_scam.csv",
+      "rows": 0,
+      "sha256": "c81f49dd2d3fc4e8e4de676a98f6cd583835d51f8fedddf1d41c90c7a101ff02",
+      "bytes": 2339246
+    },
+    {
+      "file": "data\\processed\\malicious_urls_urlhaus.csv",
+      "rows": 0,
+      "sha256": "24a3854f914daedec650dcbf6eb198b5d396ce119fd0598f5705b3f58c2ce9a5",
+      "bytes": 5417062
+    },
+    {
+      "file": "data\\processed\\text_binary_hinglish.csv",
+      "rows": 0,
+      "sha256": "021332e99b1e02de037a3883e98ccade6b776a37d0be765812c0c01f675b0f26",
+      "bytes": 479446
+    },
+    {
+      "file": "data\\processed\\text_binary_uci.csv",
+      "rows": 0,
+      "sha256": "5ba65b11b4709c739a13261eed0dfaa32794d6fd588a0842dbf8ccc34ad4be27",
+      "bytes": 659155
+    }
+  ]
+}

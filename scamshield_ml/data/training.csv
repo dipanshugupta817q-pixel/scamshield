@@ -1,0 +1,101 @@
+text,category
+Your account security requires verification. Login now using this secure link.,PHISHING
+Your bank account login session has expired. Verify your credentials immediately.,PHISHING
+Security alert: confirm your account details to prevent account suspension.,PHISHING
+Unusual login detected. Sign in now to secure your account.,PHISHING
+Your online banking account needs verification today.,PHISHING
+Verify your identity through the attached login page to restore access.,PHISHING
+Your account has been flagged. Confirm your login information immediately.,PHISHING
+Security check required. Open the link and verify your account.,PHISHING
+Your email account will be disabled unless you verify it now.,PHISHING
+Confirm your account credentials to avoid permanent suspension.,PHISHING
+Your KYC has expired. Update PAN and Aadhaar today to keep your bank account active.,KYC_SCAM
+Complete KYC verification immediately or your account will be blocked.,KYC_SCAM
+Bank KYC update required. Share OTP to complete verification.,KYC_SCAM
+Your KYC is pending. Verify PAN details using the link.,KYC_SCAM
+Final KYC reminder: submit your documents before account suspension.,KYC_SCAM
+Update your KYC now to avoid restrictions on your bank account.,KYC_SCAM
+Your KYC verification failed. Confirm your Aadhaar and OTP.,KYC_SCAM
+KYC renewal is mandatory today. Click the verification link.,KYC_SCAM
+Your bank account will be frozen unless KYC is completed immediately.,KYC_SCAM
+Submit KYC documents and OTP to restore account services.,KYC_SCAM
+Your UPI payment failed. Send Rs 500 to receive the refund.,UPI_PAYMENT_SCAM
+Scan this QR code to receive your refund immediately.,UPI_PAYMENT_SCAM
+Your UPI account requires a verification payment of Rs 10.,UPI_PAYMENT_SCAM
+Please transfer money through UPI to unlock your cashback.,UPI_PAYMENT_SCAM
+Pay the processing fee through UPI to receive the refund.,UPI_PAYMENT_SCAM
+Your payment is pending. Approve the UPI collect request now.,UPI_PAYMENT_SCAM
+Send Rs 999 to this UPI ID to confirm your booking.,UPI_PAYMENT_SCAM
+Refund verification requires you to make a small UPI payment.,UPI_PAYMENT_SCAM
+Approve this UPI request or your transaction will be cancelled.,UPI_PAYMENT_SCAM
+Transfer the security deposit using UPI to activate your account.,UPI_PAYMENT_SCAM
+Guaranteed 30 percent daily return on your investment. Deposit now.,INVESTMENT_SCAM
+Join our crypto investment plan and double your money this week.,INVESTMENT_SCAM
+Limited investment opportunity with guaranteed profit. Pay today.,INVESTMENT_SCAM
+Invest Rs 5000 and receive guaranteed returns within 24 hours.,INVESTMENT_SCAM
+Our trading expert can make you rich with zero risk.,INVESTMENT_SCAM
+Deposit money into our investment wallet for guaranteed profits.,INVESTMENT_SCAM
+Exclusive stock tips with guaranteed returns. Join immediately.,INVESTMENT_SCAM
+Crypto investment plan promises fixed high returns with no loss.,INVESTMENT_SCAM
+Send the initial investment today to unlock premium profits.,INVESTMENT_SCAM
+Earn huge passive income with our guaranteed investment scheme.,INVESTMENT_SCAM
+"Congratulations, you are selected for a work from home job. Pay registration fee.",JOB_SCAM
+Job offer approved. Send Rs 1500 for training and onboarding.,JOB_SCAM
+Earn Rs 5000 daily from home. Pay the refundable security fee.,JOB_SCAM
+Your resume has been shortlisted. Pay processing charges to receive the offer letter.,JOB_SCAM
+Immediate hiring for online work. Deposit money to activate your employee account.,JOB_SCAM
+HR selected you for a remote job. Share documents and pay verification fee.,JOB_SCAM
+Part-time job available with guaranteed income. Pay a joining fee today.,JOB_SCAM
+Your job interview is cleared. Transfer money for background verification.,JOB_SCAM
+Work from home vacancy. Pay the refundable registration amount to start.,JOB_SCAM
+Company recruitment team requests a fee before issuing your appointment letter.,JOB_SCAM
+Your parcel is held. Pay a small rescheduling fee to receive delivery.,DELIVERY_REFUND_SCAM
+Delivery failed. Click the link and pay Rs 25 to reschedule your package.,DELIVERY_REFUND_SCAM
+Your refund is pending. Pay processing charges to release the money.,DELIVERY_REFUND_SCAM
+Courier address verification requires a small payment immediately.,DELIVERY_REFUND_SCAM
+Your parcel will be returned unless you pay the delivery fee today.,DELIVERY_REFUND_SCAM
+Refund verification requires your card details and a small charge.,DELIVERY_REFUND_SCAM
+Package is on hold. Confirm your address and pay the re-delivery fee.,DELIVERY_REFUND_SCAM
+Your delivery refund cannot be processed until you pay the service charge.,DELIVERY_REFUND_SCAM
+Courier customs fee is pending. Pay now to avoid return of the parcel.,DELIVERY_REFUND_SCAM
+Delivery attempt failed. Update address and pay the rescheduling amount.,DELIVERY_REFUND_SCAM
+This is the bank customer care team. Share your OTP to secure your account.,IMPERSONATION
+I am calling from the cyber cell. Pay the fine immediately to avoid arrest.,IMPERSONATION
+Your manager asked me to collect your login details for verification.,IMPERSONATION
+Official support team requires your OTP to resolve the account issue.,IMPERSONATION
+This is the police department. Transfer the penalty amount immediately.,IMPERSONATION
+Bank security department asks you to verify your card details on this call.,IMPERSONATION
+Your company HR team requests your password for an urgent audit.,IMPERSONATION
+Customer care says your wallet will be closed unless you share OTP.,IMPERSONATION
+Government verification team requires your personal details and payment.,IMPERSONATION
+Your bank officer needs your PIN to complete the security verification.,IMPERSONATION
+Your account password has been compromised. Click here and enter your OTP to secure it.,ACCOUNT_TAKEOVER
+New device detected. Verify your password and OTP immediately.,ACCOUNT_TAKEOVER
+Reset your account by sharing the OTP received on your phone.,ACCOUNT_TAKEOVER
+Your email security session is compromised. Confirm your credentials now.,ACCOUNT_TAKEOVER
+Account recovery requires your password and verification code.,ACCOUNT_TAKEOVER
+Unrecognized login detected. Enter your OTP to cancel the login.,ACCOUNT_TAKEOVER
+Your social account will be locked unless you verify your password.,ACCOUNT_TAKEOVER
+Security team needs your login code to restore account access.,ACCOUNT_TAKEOVER
+Confirm your password and OTP to prevent unauthorized access.,ACCOUNT_TAKEOVER
+Your account recovery request is pending. Share the verification code now.,ACCOUNT_TAKEOVER
+Congratulations! You won Rs 25 lakh lottery. Pay processing fee to claim it.,LOTTERY_PRIZE_SCAM
+You have won a prize. Send Rs 2000 tax payment to receive the money.,LOTTERY_PRIZE_SCAM
+Your mobile number won a lucky draw. Pay the release charge immediately.,LOTTERY_PRIZE_SCAM
+"Congratulations, your prize is ready. Transfer the verification fee to claim it.",LOTTERY_PRIZE_SCAM
+You are selected for a cash reward of Rs 10 lakh. Pay the tax first.,LOTTERY_PRIZE_SCAM
+Lottery department confirms your winning amount. Send money to release the prize.,LOTTERY_PRIZE_SCAM
+Exclusive prize winner notification. Pay the processing fee today.,LOTTERY_PRIZE_SCAM
+You won a lucky draw. Share your bank details and pay the claim fee.,LOTTERY_PRIZE_SCAM
+Prize money is waiting. Pay the refundable release charge now.,LOTTERY_PRIZE_SCAM
+Congratulations on winning. Complete payment verification to receive your reward.,LOTTERY_PRIZE_SCAM
+Can you send me the meeting notes from yesterday?,OTHER
+The college timetable has been updated for next week.,OTHER
+Your food order has been delivered successfully.,OTHER
+Reminder: your library book is due tomorrow.,OTHER
+The weather forecast shows rain this evening.,OTHER
+Your monthly statement is available in the official banking app.,OTHER
+Please submit the assignment before Friday.,OTHER
+Your train ticket booking is confirmed.,OTHER
+The software update is available in system settings.,OTHER
+Your package was delivered to the address provided.,OTHER

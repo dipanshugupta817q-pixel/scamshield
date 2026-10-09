@@ -1,0 +1,108 @@
+{
+  "project": "ScamShield",
+  "generated_at_utc": "2026-10-08T21:32:18.631325+00:00",
+  "sources": [
+    {
+      "source": "UCI SMS Spam Collection",
+      "file": "data\\raw\\sms\\SMSSpamCollection",
+      "purpose": "Real public SMS ham/spam baseline",
+      "provenance": "UCI SMS Spam Collection; original corpus contains collected SMS spam and legitimate SMS.",
+      "license": "CC BY 4.0",
+      "sha256": "7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d",
+      "bytes": 477907,
+      "downloaded_at_utc": "2026-10-08T21:32:01.975643+00:00",
+      "notes": "Do not treat spam as equivalent to all ScamShield categories."
+    },
+    {
+      "source": "URLhaus",
+      "file": "data\\raw\\malware_urls\\urlhaus_recent.csv",
+      "purpose": "Malicious URL intelligence",
+      "provenance": "abuse.ch URLhaus malware URL database",
+      "license": null,
+      "sha256": "d0e653d00dccc86aed268a1c1d60850d69ad79f43c2115ba2042dabb689b9dea",
+      "bytes": 7113816,
+      "downloaded_at_utc": "2026-10-08T21:32:02.021670+00:00",
+      "notes": "Classify as MALWARE_URL, not PHISHING. Do not use as benign data."
+    },
+    {
+      "source": "Tranco",
+      "file": "data\\raw\\benign_candidate_domains\\tranco_top_1m.csv",
+      "purpose": "Candidate legitimate/popular-domain pool",
+      "provenance": "Tranco research-oriented top-domain ranking",
+      "license": null,
+      "sha256": "f3a8cfdf58df54eaef91dd354f8b9e0cf99608909a69371bee868523409fcfc5",
+      "bytes": 22610397,
+      "downloaded_at_utc": "2026-10-08T21:32:13.358480+00:00",
+      "notes": "NOT ground-truth benign. Domains can be compromised or abused."
+    },
+    {
+      "source": "Hinglish & English Financial Scam/Fraud Dataset",
+      "file": "data\\raw\\auxiliary_curated\\hinglish_scam_text.json",
+      "purpose": "Indian-language scam robustness / auxiliary training",
+      "provenance": "Hugging Face dataset by Anuj Bolewar",
+      "license": "CC BY 4.0",
+      "sha256": "4c2ea6d6c9303f6b7e27740cb3bbebde57ec3cc10ec7b7f9e565e99b5d483f16",
+      "bytes": 472689,
+      "downloaded_at_utc": "2026-10-08T21:32:14.577541+00:00",
+      "notes": "Contains UCI-derived English samples and hand-written Hinglish examples. Do not represent all samples as real incident messages."
+    },
+    {
+      "source": "Internship Job Scam Dataset",
+      "file": "data\\raw\\job_scams\\internship_job_scam_dataset.csv",
+      "purpose": "Job-scam auxiliary dataset",
+      "provenance": "Based on Employment Scam Aegean Dataset (EMSCAD), with custom processing.",
+      "license": null,
+      "sha256": "10ce86a59d43c52ed07317dc0b2df12500c393bacaebc436ee861d4f47a34a22",
+      "bytes": 2344941,
+      "downloaded_at_utc": "2026-10-08T21:32:18.631282+00:00",
+      "notes": "Contains legitimate/fraudulent source-derived examples plus rule-augmented suspicious variants. Preserve source_type during preprocessing."
+    }
+  ],
+  "existing_files": [
+    {
+      "file": "data\\raw\\manifest.json",
+      "bytes": 251,
+      "sha256": "7628c46a18b5a3d625e9b67154247947b2c5f49dab4cb1f8ce0cb4ca707a6419"
+    },
+    {
+      "file": "data\\raw\\auxiliary_curated\\hinglish_scam_text.json",
+      "bytes": 472689,
+      "sha256": "4c2ea6d6c9303f6b7e27740cb3bbebde57ec3cc10ec7b7f9e565e99b5d483f16"
+    },
+    {
+      "file": "data\\raw\\benign_candidate_domains\\tranco_top_1m.csv",
+      "bytes": 22610397,
+      "sha256": "f3a8cfdf58df54eaef91dd354f8b9e0cf99608909a69371bee868523409fcfc5"
+    },
+    {
+      "file": "data\\raw\\benign_candidate_domains\\tranco_top_1m.csv.zip",
+      "bytes": 9640243,
+      "sha256": "822131033446fe75743fcd96d044df2751901465f090c422ef118e04c3f68a0c"
+    },
+    {
+      "file": "data\\raw\\job_scams\\internship_job_scam_dataset.csv",
+      "bytes": 2344941,
+      "sha256": "10ce86a59d43c52ed07317dc0b2df12500c393bacaebc436ee861d4f47a34a22"
+    },
+    {
+      "file": "data\\raw\\malware_urls\\urlhaus_recent.csv",
+      "bytes": 7113816,
+      "sha256": "d0e653d00dccc86aed268a1c1d60850d69ad79f43c2115ba2042dabb689b9dea"
+    },
+    {
+      "file": "data\\raw\\sms\\readme",
+      "bytes": 5868,
+      "sha256": "8753cd2d3cab68f80c8257851b8c2037778c267f55accb6fd1b5a2e32d36a84e"
+    },
+    {
+      "file": "data\\raw\\sms\\SMSSpamCollection",
+      "bytes": 477907,
+      "sha256": "7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d"
+    },
+    {
+      "file": "data\\raw\\sms\\sms_spam_collection.zip",
+      "bytes": 203415,
+      "sha256": "1587ea43e58e82b14ff1f5425c88e17f8496bfcdb67a583dbff9eefaf9963ce3"
+    }
+  ]
+}

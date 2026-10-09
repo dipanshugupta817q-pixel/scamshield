@@ -1,0 +1,40 @@
+{
+  "dataset": "hinglish",
+  "random_state": 42,
+  "total_rows": 3558,
+  "split": {
+    "train": 2276,
+    "validation": 570,
+    "test": 712
+  },
+  "validation": {
+    "precision": 0.9405940594059405,
+    "recall": 0.9047619047619048,
+    "f1": 0.9223300970873787,
+    "confusion_matrix": [
+      [
+        459,
+        6
+      ],
+      [
+        10,
+        95
+      ]
+    ]
+  },
+  "test": {
+    "precision": 0.9541984732824428,
+    "recall": 0.9615384615384616,
+    "f1": 0.9578544061302682,
+    "confusion_matrix": [
+      [
+        576,
+        6
+      ],
+      [
+        5,
+        125
+      ]
+    ]
+  }
+}

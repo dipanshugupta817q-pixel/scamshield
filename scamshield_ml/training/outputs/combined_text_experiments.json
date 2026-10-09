@@ -1,0 +1,151 @@
+{
+  "random_state": 42,
+  "random_mixed": {
+    "validation": {
+      "title": "COMBINED MODEL \u2192 VALIDATION",
+      "rows": 1538,
+      "precision": 0.90625,
+      "recall": 0.9602649006622517,
+      "f1": 0.932475884244373,
+      "confusion_matrix": [
+        [
+          1206,
+          30
+        ],
+        [
+          12,
+          290
+        ]
+      ]
+    },
+    "test": {
+      "title": "COMBINED MODEL \u2192 RANDOM TEST",
+      "rows": 1922,
+      "precision": 0.9037037037037037,
+      "recall": 0.9682539682539683,
+      "f1": 0.9348659003831418,
+      "confusion_matrix": [
+        [
+          1505,
+          39
+        ],
+        [
+          12,
+          366
+        ]
+      ]
+    },
+    "per_source": [
+      {
+        "title": "COMBINED MODEL \u2192 RANDOM TEST \u2192 UCI",
+        "rows": 1026,
+        "precision": 0.9640287769784173,
+        "recall": 0.9781021897810219,
+        "f1": 0.9710144927536232,
+        "confusion_matrix": [
+          [
+            884,
+            5
+          ],
+          [
+            3,
+            134
+          ]
+        ],
+        "source": "uci"
+      },
+      {
+        "title": "COMBINED MODEL \u2192 RANDOM TEST \u2192 HINGLISH",
+        "rows": 718,
+        "precision": 0.9761904761904762,
+        "recall": 0.984,
+        "f1": 0.9800796812749004,
+        "confusion_matrix": [
+          [
+            590,
+            3
+          ],
+          [
+            2,
+            123
+          ]
+        ],
+        "source": "hinglish"
+      },
+      {
+        "title": "COMBINED MODEL \u2192 RANDOM TEST \u2192 JOB_SCAM",
+        "rows": 178,
+        "precision": 0.7785714285714286,
+        "recall": 0.9396551724137931,
+        "f1": 0.8515625,
+        "confusion_matrix": [
+          [
+            31,
+            31
+          ],
+          [
+            7,
+            109
+          ]
+        ],
+        "source": "job_scam"
+      }
+    ]
+  },
+  "leave_one_source_out": [
+    {
+      "title": "LEAVE-ONE-OUT \u2192 TEST = UCI",
+      "rows": 5158,
+      "precision": 0.9830508474576272,
+      "recall": 0.9937694704049844,
+      "f1": 0.9883810999225406,
+      "confusion_matrix": [
+        [
+          4505,
+          11
+        ],
+        [
+          4,
+          638
+        ]
+      ],
+      "held_out_source": "uci"
+    },
+    {
+      "title": "LEAVE-ONE-OUT \u2192 TEST = HINGLISH",
+      "rows": 3558,
+      "precision": 0.995260663507109,
+      "recall": 0.9662576687116564,
+      "f1": 0.980544747081712,
+      "confusion_matrix": [
+        [
+          2903,
+          3
+        ],
+        [
+          22,
+          630
+        ]
+      ],
+      "held_out_source": "hinglish"
+    },
+    {
+      "title": "LEAVE-ONE-OUT \u2192 TEST = JOB_SCAM",
+      "rows": 894,
+      "precision": 0.6666666666666666,
+      "recall": 0.35353535353535354,
+      "f1": 0.46204620462046203,
+      "confusion_matrix": [
+        [
+          195,
+          105
+        ],
+        [
+          384,
+          210
+        ]
+      ],
+      "held_out_source": "job_scam"
+    }
+  ]
+}
