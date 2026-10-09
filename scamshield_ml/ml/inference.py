@@ -188,6 +188,10 @@ def analyze(text="", urls=None, ocr_text=""):
         category,
     )
 
+    # Align final prediction with high/critical risk.
+    if score >= 60:
+        scam_label = "SCAM"
+
     campaign = assign_campaign(combined)
 
     return {
