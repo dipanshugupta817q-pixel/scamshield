@@ -331,24 +331,90 @@ export default function Home() {
     setLoading(true);
     setResult(null);
     try {
-      const response = await fetch(`${API_URL}/analyze`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          text: cleanText,
-          urls: cleanUrl ? [cleanUrl] : [],
-          ocr_text: "",
-        }),
-      });
-      if (!response.ok) {
-        const detail = await response.json().catch(() => null);
-        throw new Error(
-          typeof detail?.detail === "string"
-            ? detail.detail
-            : `API returned ${response.status}`
+      let data: AnalysisResult;
+
+      if (!cleanText && cleanUrl) {
+        const response = await fetch(`${API_URL}/predict`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: cleanUrl }),
+        });
+
+        if (!response.ok) {
+          const detail = await response.json().catch(() => null);
+          throw new Error(
+            typeof detail?.detail === "string"
+              ? detail.detail
+              : typeof detail?.error === "string"
+                ? detail.error
+                : `URL prediction API returned ${response.status}`
+          );
+        }
+
+        const prediction = await response.json() as {
+          url: string;
+          hostname: string;
+          prediction: string;
+          is_phishing: boolean;
+          phishing_score: number;
+          threshold: number;
+          model_version: string;
+          warning?: string;
+        };
+
+        const probability = Math.max(
+          0,
+          Math.min(1, Number(prediction.phishing_score) || 0)
         );
+        const isPhishing =
+          prediction.is_phishing === true ||
+          prediction.prediction?.toUpperCase() === "PHISHING";
+
+        data = {
+          prediction: isPhishing ? "SCAM" : "NON_SCAM",
+          binary_prediction: isPhishing ? "SCAM" : "NON_SCAM",
+          risk_score: Math.round(probability * 100),
+          scam_probability: probability * 100,
+          confidence: Math.max(probability, 1 - probability),
+          risk_level: isPhishing ? "HIGH" : "LOW",
+          category: "URL_ANALYSIS",
+          explanation: `${prediction.warning || "Prediction is probabilistic."} Model: ${prediction.model_version}. URL: ${prediction.hostname}.`,
+          signals: [
+            {
+              name: "URL phishing model",
+              value: `${(probability * 100).toFixed(2)}% phishing probability`,
+              description: `Decision threshold: ${(prediction.threshold * 100).toFixed(0)}%`,
+              severity: isPhishing ? "HIGH" : "LOW",
+            },
+          ],
+          recommendations: isPhishing
+            ? ["Avoid opening this URL or entering personal information."]
+            : ["Check the website address carefully before sharing sensitive information."],
+        };
+      } else {
+        const response = await fetch(`${API_URL}/analyze`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            text: cleanText,
+            urls: cleanUrl ? [cleanUrl] : [],
+            ocr_text: "",
+          }),
+        });
+
+        if (!response.ok) {
+          const detail = await response.json().catch(() => null);
+          throw new Error(
+            typeof detail?.detail === "string"
+              ? detail.detail
+              : typeof detail?.error === "string"
+                ? detail.error
+                : `API returned ${response.status}`
+          );
+        }
+
+        data = await response.json() as AnalysisResult;
       }
-      const data = (await response.json()) as AnalysisResult;
       setResult(data);
       setActiveNav("scanner");
       void loadDashboardData();
