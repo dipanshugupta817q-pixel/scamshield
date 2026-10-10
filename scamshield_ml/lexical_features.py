@@ -123,10 +123,11 @@ def normalize_model_url(value):
         if port is not None:
             netloc += ":" + str(port)
 
+        canonical_path = "" if parsed.path == "/" else parsed.path
         return urlunsplit((
             parsed.scheme.lower(),
             netloc,
-            parsed.path,
+            canonical_path,
             parsed.query,
             parsed.fragment,
         ))
